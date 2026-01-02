@@ -1,4 +1,4 @@
-Enterprise Inventory & Financial Logistics System
+**Enterprise Inventory & Financial Logistics System**
 Overview
 An advanced ERP-grade Backend designed to bridge the gap between physical warehouse operations and financial accounting. This system automates complex business workflows, ensuring that every stock movement is synchronized with financial ledgers in real-time.
 
