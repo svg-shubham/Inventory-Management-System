@@ -1,0 +1,18 @@
+###
+
+GET http://127.0.0.1:8000/finance/transactions/ HTTP/1.1
+
+###
+GET http://127.0.0.1:8000/finance/payments/ HTTP/1.1
+###
+POST http://127.0.0.1:8000/finance/payments/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "transaction": "35ce4c77-724c-4923-9095-5e9b5bc7a694", 
+    "amount_paid": "50000.00",
+    "payment_mode": "upi",
+    "reference_number": "TXN123456789",
+    "remarks": "First installment for cement order",
+    "payment_date": "2026-01-02T15:30:00Z"
+}

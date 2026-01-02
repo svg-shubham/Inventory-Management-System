@@ -1,0 +1,56 @@
+###
+GET http://127.0.0.1:8000/orders/purchase-order/ HTTP/1.1
+
+###
+POST http://127.0.0.1:8000/orders/purchase-order/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "vendor": "87c75738e6994017b87a21a027b868e5", 
+    "product": 2,
+    "warehouse": 1,
+    "quantity": 250,
+    "cost_price": "450.00",
+    "due_date": "2026-03-20",
+    "penalty_rate_month": "1.50",
+    "status": "pending"
+}
+
+###
+PATCH http://127.0.0.1:8000/orders/purchase-order/b8d09bbf-197a-4836-a1e7-bf2cbcd664dc/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "status": "received",
+}
+
+###
+POST  http://127.0.0.1:8000/orders/purchase-order/fdf22b49-49ac-4957-a45b-c63af6771d18/cancel_order/ HTTP/1.1
+Content-Type: application/json
+
+# for salesOrder
+###
+GET  http://127.0.0.1:8000/orders/sales-order/ HTTP/1.1
+Content-Type: application/json
+
+###
+POST  http://127.0.0.1:8000/orders/sales-order/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "customer": "8d6754a8a5744b879a2e65011c079adf",
+    "product": 1,
+    "warehouse": 1,
+    "quantity": 50,
+    "sell_price": "650.00",
+    "due_date": "2026-02-10",
+    "status": "pending"
+}
+
+###
+PATCH  http://127.0.0.1:8000/orders/sales-order/1a642072-1b70-43a5-b3b9-50a3c0819099/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "status": "delivered"
+}

@@ -1,0 +1,148 @@
+###
+# for getting all wareHouses
+GET http://127.0.0.1:8000/inventory/warehouse/ HTTP/1.1
+
+###
+# for adding new ware House
+POST http://127.0.0.1:8000/inventory/warehouse/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name":"KPC-kinwat warehouse",
+  "location" : "main road market line kinwat tq kinvat dist nanded"
+
+}
+
+###
+# for updating the whole object
+PUT http://127.0.0.1:8000/inventory/warehouse/1/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "KPC-Islapur Main Branch",
+  "location": "New Market Road, Islapur, Nanded"
+}
+
+####
+# for updating some thing in object
+PATCH http://127.0.0.1:8000/inventory/warehouse/2/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "location": "New Market Road, Islapur, Nanded"
+}
+
+###
+# for deleting ware house
+DELETE http://127.0.0.1:8000/inventory/warehouse/1/ HTTP/1.1
+Content-Type: application/json
+
+
+# api for Products
+###
+GET  http://127.0.0.1:8000/inventory/products/ HTTP/1.1
+Content-Type: application/json
+
+#for adding products
+###
+POST  http://127.0.0.1:8000/inventory/products/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "ACC Strong Cement",
+    "vendor": "87c75738e6994017b87a21a027b868e5",
+    "category": "Material Cement",
+    "description": "Updated description for ACC cement"
+}
+
+# for put
+###
+PUT  http://127.0.0.1:8000/inventory/products/1/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "KPC Cement Ultra HD",
+    "vendor": "87c75738e6994017b87a21a027b868e5",
+    "category": "Material Cement",
+    "description": "Premium quality cement for high-rise buildings."
+}
+
+# for Patch method 
+###
+PATCH  http://127.0.0.1:8000/inventory/products/1/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "KPC Cement Ultra M-20 "
+}
+
+DELETE  http://127.0.0.1:8000/inventory/products/1/ HTTP/1.1
+Content-Type: application/json
+
+
+###
+GET http://127.0.0.1:8000/inventory/products/?category=Material+Cement&vendor=87c75738-e699-4017-b87a-21a027b868e5 HTTP/1.1
+
+###
+GET http://127.0.0.1:8000/inventory/products/?ordering=created_at HTTP/1.1
+
+###
+GET http://127.0.0.1:8000/inventory/products/?search=ACC HTTP/1.1
+###
+# for stocks amnupulation
+
+GET http://127.0.0.1:8000/inventory/stocks/ HTTP/1.1
+
+###
+POST http://127.0.0.1:8000/inventory/stocks/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "warehouse": 1, 
+    "product": 1,
+    "quantity": 20,
+    "min_stock_level": 10
+}
+
+###
+PUT http://127.0.0.1:8000/inventory/stocks/1/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "warehouse": 1,
+    "product": 2,
+    "quantity": 150,
+    "min_stock_level": 20
+}
+
+###
+PATCH http://127.0.0.1:8000/inventory/stocks/1/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "quantity": 5
+}
+
+###
+#custom action to add Stock
+POST http://127.0.0.1:8000/inventory/stocks/1/add_stock/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "added_quantity": 50
+}
+
+### 
+# to get low stock
+GET http://127.0.0.1:8000/inventory/stocks/low_stock/ HTTP/1.1
+
+###
+DELETE http://127.0.0.1:8000/inventory/stocks/1/ HTTP/1.1
+
+#GET /inventory/stocks/?warehouse=2  Agar aapko sirf warehouse ID 2 ka stock dekhna hai:
+###
+GET http://127.0.0.1:8000/inventory/stocks/?search=Cement HTTP/1.1
+
+# GET /inventory/stocks/?search=Cement Agar product name se search karna hai
+###
+GET http://127.0.0.1:8000//inventory/stocks/?warehouse=1 HTTP/1.1
