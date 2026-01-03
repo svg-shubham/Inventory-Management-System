@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'django_filters',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'yogesh_inventory.wsgi.application'
+ASGI_APPLICATION = 'yogesh_inventory.asgi.application' # <--- Iska naam wahi hona chahiye jo aapke project folder ka hai
 
 
 # Database
@@ -143,3 +146,14 @@ REST_FRAMEWORK = {
 }
 
 
+
+
+# Testing ke liye InMemory layer (No Redis needed for now)
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
+
+import logging
+logging.getLogger('django.request').setLevel(logging.ERROR)

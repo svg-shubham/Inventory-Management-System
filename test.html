@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2 id="status">Connecting...</h2>
+    <div id="log"></div>
+    <script>
+        // Seedha WebSocket, koi extension nahi
+        const socket = new WebSocket('ws://127.0.0.1:8000/ws/notifications/');
+
+        socket.onopen = () => {
+            document.getElementById('status').innerText = "✅ CONNECTED!";
+            console.log("Connected!");
+        };
+
+        socket.onmessage = (e) => {
+            const data = JSON.parse(e.data);
+            document.getElementById('log').innerHTML += `<p>🔔 ${data.alert}</p>`;
+            alert("ALERT: " + data.alert);
+        };
+
+        socket.onclose = () => {
+            document.getElementById('status').innerText = "❌ DISCONNECTED!";
+        };
+    </script>
+</body>
+</html>

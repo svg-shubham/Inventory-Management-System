@@ -7,9 +7,9 @@ Content-Type: application/json
 
 {
     "vendor": "87c75738e6994017b87a21a027b868e5", 
-    "product": 2,
+    "product": 1,
     "warehouse": 1,
-    "quantity": 250,
+    "quantity": 50,
     "cost_price": "450.00",
     "due_date": "2026-03-20",
     "penalty_rate_month": "1.50",
@@ -39,16 +39,16 @@ Content-Type: application/json
 
 {
     "customer": "8d6754a8a5744b879a2e65011c079adf",
-    "product": 1,
+    "product": 2,
     "warehouse": 1,
-    "quantity": 50,
+    "quantity": 1,
     "sell_price": "650.00",
     "due_date": "2026-02-10",
     "status": "pending"
 }
 
 ###
-PATCH  http://127.0.0.1:8000/orders/sales-order/1a642072-1b70-43a5-b3b9-50a3c0819099/ HTTP/1.1
+PATCH  http://127.0.0.1:8000/orders/sales-order/f5884935-ec50-4a1a-9190-c688a26e311d/ HTTP/1.1
 Content-Type: application/json
 
 {
