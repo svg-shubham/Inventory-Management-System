@@ -1,46 +1,66 @@
-**Enterprise Inventory & Financial Logistics System**
-Overview
-An advanced ERP-grade Backend designed to bridge the gap between physical warehouse operations and financial accounting. This system automates complex business workflows, ensuring that every stock movement is synchronized with financial ledgers in real-time.
+# 📦 Inventory Management System (Real-time)
 
-Core Functionalities
-1. Automated Financial Synchronization (Signals)
-Zero-Manual Entry: Integrated Django Signals to auto-trigger Finance Transactions whenever a Purchase or Sales Order is validated.
+Industry-standard Inventory Management Solution built with **Django**, focusing on real-time stock monitoring and automated sales workflows.
 
-Real-time Ledger: Dynamic balance updates for vendors and customers upon payment logging.
+---
 
-2. Intelligent Inventory Management
-Multi-Warehouse Support: Track stock levels across different geographic locations.
+## 🚀 Key Highlights (Industry Level)
+- **Real-time Monitoring:** Integrated **WebSockets (Django Channels)** for instant low-stock alerts without page refresh.
+- **Asynchronous Processing:** Powered by **Daphne** ASGI server for handling high-concurrency connections.
+- **Signal-driven Architecture:** Automated stock deductions and notifications using **Django Signals**.
+- **Data Integrity:** Strict validation for inventory levels and warehouse management.
 
-Low-Stock Heuristics: Dedicated endpoints to identify and alert for products falling below critical thresholds.
+---
 
-Custom Stock Actions: Atomic operations for manual stock adjustments and audits.
+## 🛠 Tech Stack
+- **Backend:** Django 5.x, Django REST Framework (DRF)
+- **Real-time:** Django Channels, WebSockets
+- **Server:** Daphne (ASGI)
+- **Database:** SQLite (Development) / PostgreSQL (Production ready)
+- **Frontend:** JavaScript (Native WebSocket API), Bootstrap 5
 
-3. Business Logic & Validation
-Oversell Protection: Built-in validation prevents Sales Orders from being processed if stock is insufficient.
+---
 
-Data Integrity: Strict foreign key relationships and choice-field constraints ensure a clean database state.
+## ⚡ Real-time Features
+### 🔔 Low Stock Notifications
+The system monitors inventory levels in real-time. When a `SalesOrder` is placed and the `Stock` falls below the `min_stock_level`:
+1.  A **Django Signal** triggers.
+2.  The **Channel Layer** broadcasts a message to the `inventory_alerts` group.
+3.  The **WebSocket Consumer** pushes the notification to all connected dashboard clients.
 
-🧪 Quality Assurance (Automated Testing)
-This project follows Test-Driven Development (TDD) principles. I have implemented a comprehensive test suite using APITestCase to verify integration across all modules.
+---
+
+## 🔧 Installation & Setup
+
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/svg-shubham/Inventory-Management-System.git](https://github.com/svg-shubham/Inventory-Management-System.git)
+   cd Inventory-Management-System
+Setup Virtual Environment:
 
 Bash
 
-# Execute the full test suite
-python manage.py test
-Current Status: Ran 5 tests - OK
+python -m venv my_venv
+# Windows
+my_venv\Scripts\activate
+Install Dependencies:
 
-Tech Stack
-Backend: Python, Django, Django REST Framework.
-
-Database: SQLite (Dev), PostgreSQL (Configurable for Prod).
-
-Architecture: Modular App structure (Inventory, Orders, Finance).
-
-Installation
-git clone https://github.com/your-username/your-repo.git
+Bash
 
 pip install -r requirements.txt
+Database Migrations:
+
+Bash
 
 python manage.py migrate
+Run the Development Server (ASGI):
 
-python manage.py runserver
+Bash
+
+daphne -p 8000 yogesh_inventory.asgi:application
+Project Structure
+inventory/: Core logic for stock, products, and real-time consumers.
+
+orders/: Management of sales and purchase orders with signal triggers.
+
+yogesh_inventory/: Project configuration and ASGI/WSGI routing.
