@@ -1,0 +1,28 @@
+###
+
+POST  http://127.0.0.1:8000/procurement/purchase-requests/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDU1MTE3LCJpYXQiOjE3Njc0NTE1MTcsImp0aSI6IjA5YzIwYjk3MzFkYjQ0YTY4ZTdmMThlOWFiNWFlMmZkIiwidXNlcl9pZCI6IjMzYzIyYzJmLTBmYTctNGNmYS04OTVhLTZkN2EyZTY1ZjZkZSIsInVzZXJuYW1lIjoiYXJqdW5fcHJvY3VyZSIsInJvbGUiOiJwcm9jdXJlbWVudCIsImVtYWlsIjoiYXJqdW4ucEBjb21wYW55LmNvbSJ9.imkKdUxXwMVuusJy1htg3geyw99siJHZaQRDhMrouPQ
+
+{
+    "description": "Stock replenishment for Q1 project",
+    "priority": "high",
+    "required_by_date": "2026-01-20",
+    "department": "Construction Site A",
+    "items": [
+        {
+            "product": "1", 
+            "specification": "OPC Grade 53",
+            "requested_quantity": 500,
+            "uom": "Bags",
+            "estimated_price": "450.00"
+        },
+        {
+            "product": "2",
+            "specification": "12mm TMT Steel",
+            "requested_quantity": 5,
+            "uom": "Tons",
+            "estimated_price": "65000.00"
+        }
+    ]
+}

@@ -1,0 +1,136 @@
+###
+POST http://127.0.0.1:8000/users/api/login/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "arjun_procure",
+    "password": "Password@123"
+}
+###
+# {
+#   "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2ODA0NTc1MywiaWF0IjoxNzY3NDQwOTUzLCJqdGkiOiI4MGMxMjMwYjFiZTE0ZWJkODg1Y2NjN2I2NzhhNGYxYSIsInVzZXJfaWQiOiIzYmU5ZjBjMC00OGUyLTQ3ZmYtOGY3Ny00YTAyMWMyZTgxOTYiLCJ1c2VybmFtZSI6ImFkbWluX2Jvc3MiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIn0.Th2R3oGEaIjeYoRdfoKWb2SC9lAljNP5XC_4zgYu9OQ",
+#   "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDU1MTE3LCJpYXQiOjE3Njc0NTE1MTcsImp0aSI6IjA5YzIwYjk3MzFkYjQ0YTY4ZTdmMThlOWFiNWFlMmZkIiwidXNlcl9pZCI6IjMzYzIyYzJmLTBmYTctNGNmYS04OTVhLTZkN2EyZTY1ZjZkZSIsInVzZXJuYW1lIjoiYXJqdW5fcHJvY3VyZSIsInJvbGUiOiJwcm9jdXJlbWVudCIsImVtYWlsIjoiYXJqdW4ucEBjb21wYW55LmNvbSJ9.imkKdUxXwMVuusJy1htg3geyw99siJHZaQRDhMrouPQ",,
+#   "role": "admin",
+#   "user_id": "3be9f0c0-48e2-47ff-8f77-4a021c2e8196"
+# }
+
+###
+POST http://127.0.0.1:8000/users/api/login/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2ODA0NTI2NywiaWF0IjoxNzY3NDQwNDY3LCJqdGkiOiI1M2JmOTI0ZDEwZmQ0ODIyYjlmYmM4ZDY4YTcwNTJhYSIsInVzZXJfaWQiOiIzYmU5ZjBjMC00OGUyLTQ3ZmYtOGY3Ny00YTAyMWMyZTgxOTYiLCJ1c2VybmFtZSI6ImFkbWluX2Jvc3MiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIn0.SDWLaEzXOxccBGhCw4WY-K0u21IhhVAvLSeTpK9JMFY" 
+}
+
+{
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDQ0MTg4LCJpYXQiOjE3Njc0NDA0NjcsImp0aSI6ImZlZTVlMmUzMDI1YTRiNGRhYTg4OWU0YmVhYzMwYmQ2IiwidXNlcl9pZCI6IjNiZTlmMGMwLTQ4ZTItNDdmZi04Zjc3LTRhMDIxYzJlODE5NiIsInVzZXJuYW1lIjoiYWRtaW5fYm9zcyIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.8OhuKd_9Pe-UfVrVAkhW_XCRv_fYE0rGF8jqe5wIliA",
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2ODA0NTM4OCwiaWF0IjoxNzY3NDQwNTg4LCJqdGkiOiJlMWJjMWNkYmFmNzg0OTMwOTZjNmUyMzY3YjBmZDAyMyIsInVzZXJfaWQiOiIzYmU5ZjBjMC00OGUyLTQ3ZmYtOGY3Ny00YTAyMWMyZTgxOTYiLCJ1c2VybmFtZSI6ImFkbWluX2Jvc3MiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIn0.zLoh_3OuOjJWJdO4UJsgt1G-Nx97tvEZvQhKJbdv8DU"
+}
+
+###
+POST http://127.0.0.1:8000/users/api/logout/ HTTP/1.1
+Content-Type: application/json
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDQ0MTg4LCJpYXQiOjE3Njc0NDA0NjcsImp0aSI6ImZlZTVlMmUzMDI1YTRiNGRhYTg4OWU0YmVhYzMwYmQ2IiwidXNlcl9pZCI6IjNiZTlmMGMwLTQ4ZTItNDdmZi04Zjc3LTRhMDIxYzJlODE5NiIsInVzZXJuYW1lIjoiYWRtaW5fYm9zcyIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.8OhuKd_9Pe-UfVrVAkhW_XCRv_fYE0rGF8jqe5wIliA
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2ODA0NTM4OCwiaWF0IjoxNzY3NDQwNTg4LCJqdGkiOiJlMWJjMWNkYmFmNzg0OTMwOTZjNmUyMzY3YjBmZDAyMyIsInVzZXJfaWQiOiIzYmU5ZjBjMC00OGUyLTQ3ZmYtOGY3Ny00YTAyMWMyZTgxOTYiLCJ1c2VybmFtZSI6ImFkbWluX2Jvc3MiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIn0.zLoh_3OuOjJWJdO4UJsgt1G-Nx97tvEZvQhKJbdv8DU" 
+}
+
+# now want to add the the users from every role
+###
+POST http://127.0.0.1:8000/users/manage-users/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDQ0NTUzLCJpYXQiOjE3Njc0NDA5NTMsImp0aSI6ImVmNjM4YThhZTIyNDRiMzViZWVjNjM1ZTM4YTBhZGIxIiwidXNlcl9pZCI6IjNiZTlmMGMwLTQ4ZTItNDdmZi04Zjc3LTRhMDIxYzJlODE5NiIsInVzZXJuYW1lIjoiYWRtaW5fYm9zcyIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.TKkxSy0aiig5V0vWOO6N5xDI-7hVkIMf3ikkyW4fUEg
+
+# {
+#     "username": "vijay_finance",
+#     "email": "vijay@company.com",
+#     "password": "StrongPass#2026",
+#     "first_name": "Vijay",
+#     "last_name": "Iyer",
+#     "role": "finance",
+#     "phone": "9822113344"
+# }
+# {
+#     "username": "amit_finance",
+#     "email": "amit.f@company.com",
+#     "password": "FinancePass!123",
+#     "first_name": "Amit",
+#     "last_name": "Khanna",
+#     "role": "finance",
+#     "phone": "9876500004",
+#     "address": "Finance & Accounts Dept, Floor 1"
+# }
+
+# {
+#     "username": "kiran_sales",
+#     "email": "kiran.s@company.com",
+#     "password": "SalesPass$123",
+#     "first_name": "Kiran",
+#     "last_name": "Rao",
+#     "role": "sales",
+#     "phone": "9876500003",
+#     "address": "Sales Wing, South Block"
+# }
+
+# {
+#     "username": "arjun_procure",
+#     "email": "arjun.p@company.com",
+#     "password": "Password@123",
+#     "first_name": "Arjun",
+#     "last_name": "Mehta",
+#     "role": "procurement",
+#     "phone": "9876500001",
+#     "address": "Procurement Dept, Floor 2, Head Office"
+# }
+
+# {
+#     "username": "suresh_stock1",
+#     "email": "suresh.v1@company.com",
+#     "password": "StockPassword#123",
+#     "first_name": "Suresh",
+#     "last_name": "Verma",
+#     "role": "inventory",
+#     "phone": "9876500011",
+#     "address": "Central Warehouse, Plot 45, Okhla"
+# }
+
+# {
+#     "email": "bansal.industries@gmail.com",
+#     "first_name": "Bansal",
+#     "last_name": "Industries",
+#     "role": "vendor",
+#     "phone": "9911223344",
+#     "address": "GIDC Industrial Estate, Gujarat"
+# }
+
+# {
+#     "email": "rahul.retailer@yahoo.com",
+#     "first_name": "Rahul",
+#     "last_name": "Kumar",
+#     "role": "customer",
+#     "phone": "9955667788",
+#     "address": "Main Market, Shop No. 12, Jaipur"
+# }
+
+###
+GET http://127.0.0.1:8000/users/manage-users/me/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDQ0NTUzLCJpYXQiOjE3Njc0NDA5NTMsImp0aSI6ImVmNjM4YThhZTIyNDRiMzViZWVjNjM1ZTM4YTBhZGIxIiwidXNlcl9pZCI6IjNiZTlmMGMwLTQ4ZTItNDdmZi04Zjc3LTRhMDIxYzJlODE5NiIsInVzZXJuYW1lIjoiYWRtaW5fYm9zcyIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.TKkxSy0aiig5V0vWOO6N5xDI-7hVkIMf3ikkyW4fUEg
+
+###
+POST http://127.0.0.1:8000/users/manage-users/change-password/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDQ0NTUzLCJpYXQiOjE3Njc0NDA5NTMsImp0aSI6ImVmNjM4YThhZTIyNDRiMzViZWVjNjM1ZTM4YTBhZGIxIiwidXNlcl9pZCI6IjNiZTlmMGMwLTQ4ZTItNDdmZi04Zjc3LTRhMDIxYzJlODE5NiIsInVzZXJuYW1lIjoiYWRtaW5fYm9zcyIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.TKkxSy0aiig5V0vWOO6N5xDI-7hVkIMf3ikkyW4fUEg
+
+{
+  "old_password": "StrongPass#2026",
+  "new_password": "NewSecurePass@2026"
+}
+
+###
+
+GET http://127.0.0.1:8000/users/notifications/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NDUzMTI0LCJpYXQiOjE3Njc0NDk1MjQsImp0aSI6IjZhNzIwNDVjMzkwODQ2YzlhMWJjMzJhYWMwNGI1ODg0IiwidXNlcl9pZCI6IjMzYzIyYzJmLTBmYTctNGNmYS04OTVhLTZkN2EyZTY1ZjZkZSIsInVzZXJuYW1lIjoiYXJqdW5fcHJvY3VyZSIsInJvbGUiOiJwcm9jdXJlbWVudCIsImVtYWlsIjoiYXJqdW4ucEBjb21wYW55LmNvbSJ9._WpbZe-3ZwURZ34dAjokfNVeUcEvBgCkr766AYOGziQ

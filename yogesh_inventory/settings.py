@@ -42,10 +42,13 @@ INSTALLED_APPS = [
     'inventory.apps.InventoryConfig',
     'orders.apps.OrdersConfig',
     'finance.apps.FinanceConfig',
+    'procurement.apps.ProcurementConfig',
+    'schema_viewer',
     'django_extensions',
     'rest_framework',
     'django_filters',
     'channels',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -136,13 +139,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated', # Ye line har API ko lock kar deti hai
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated', # By default har API locked rahegi
     ],
+}
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     
+    'ROTATE_REFRESH_TOKENS': True,                  
+    'BLACKLIST_AFTER_ROTATION': True,              
+    'UPDATE_LAST_LOGIN': True,                      
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',),               
 }
 
 

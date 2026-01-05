@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://127.0.0.1:8000/orders/sales-order/f5884935-ec50-4a1a-9190-c688a26e311d/ HTTP/1.1
+PATCH  http://127.0.0.1:8000/orders/sales-order/0a0fda50-8f3f-4ef2-9939-467f2a06cef5/ HTTP/1.1
 Content-Type: application/json
 
 {
