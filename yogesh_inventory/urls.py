@@ -24,5 +24,6 @@ urlpatterns = [
     path('inventory/',include("inventory.urls")),
     path('finance/',include("finance.urls")),
     path('procurement/',include("procurement.urls")),
+    path("production/", include("production.urls")),
     path('schema/', include('schema_viewer.urls')),
 ]

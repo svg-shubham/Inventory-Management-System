@@ -4,7 +4,8 @@ from rest_framework import generics,viewsets, filters,status
 from django_filters.rest_framework import DjangoFilterBackend
 from inventory.models import Warehouse,Product,Stock
 from inventory.serilizers import WerehouseSerializer,ProductSerializer,StockSerializer
-from rest_framework.permissions import AllowAny,IsAuthenticatedOrReadOnly
+from rest_framework.permissions import AllowAny,IsAuthenticatedOrReadOnly,IsAuthenticated
+from users.permissions import IsSystemAdmin, IsInventoryManager
 
 from rest_framework.decorators import action
 from django.db import models  
@@ -15,14 +16,19 @@ from django.db.models import F
 class WarehouseListCreateAPIView(generics.ListCreateAPIView):
   queryset = Warehouse.objects.all()
   serializer_class = WerehouseSerializer
-  permission_classes = [AllowAny]
-  # further that authentication will be added
+  def get_permissions(self):
+    if self.request.method == 'POST':
+        return [(IsSystemAdmin | IsInventoryManager)()]
+    return [IsAuthenticated()]
 
 class WarehouseRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
   queryset = Warehouse.objects.all()
   serializer_class = WerehouseSerializer
-  permission_classes = [AllowAny]
   lookup_field = "warehouse_id"
+  def get_permissions(self):
+    if self.request.method in ['PUT', 'PATCH', 'DELETE']:
+        return [(IsSystemAdmin | IsInventoryManager)()]
+    return [IsAuthenticated()]
 
 # industry-level API banane ke liye hum ModelViewSet ka use karenge. Industry mein ViewSet isliye pasand kiya jata hai kyunki ye ek hi class mein GET (list/detail), POST, PUT, PATCH, aur DELETE sab handle kar leta hai.
 class ProductViewSet(viewsets.ModelViewSet):
@@ -46,7 +52,7 @@ class ProductViewSet(viewsets.ModelViewSet):
   search_fields = ['name','sku']
 
   ordering_fields = ['created_at','name']
-  pass
+
 
 class StockViewset(viewsets.ModelViewSet):
   queryset = Stock.objects.all().select_related('product',"warehouse")
